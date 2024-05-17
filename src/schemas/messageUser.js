@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const şema = Schema({
+const schema = Schema({
 	guildID: String,
 	userID: String,
 	topStat: { type: Number, default: 0 },
@@ -9,4 +9,4 @@ const şema = Schema({
 	timeout: { type: Number, default: Date.now() },
 });
 
-module.exports = model("messageUser", şema);
+module.exports = model("messageUser", schema);
