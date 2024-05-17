@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const şema = Schema({
+const schema = Schema({
 	guildID: String,
 	userID: String,
 	topStat: { type: Number, default: 0 },
@@ -8,4 +8,4 @@ const şema = Schema({
 	weeklyStat: { type: Number, default: 0 },
 });
 
-module.exports = model("voiceUser", şema);
+module.exports = model("voiceUser", schema);
