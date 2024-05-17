@@ -7,13 +7,13 @@ mongoose.connect(settings.mongoURL, {
 });
 
 mongoose.connection.on("connected", () => {
-  console.log(`[MONGOOSE] Mongo bağlantısı kuruldu!`);
+  console.log(`[MONGOOSE] The Mongo connection has been established!`);
 });
 
 mongoose.connection.on("disconnected", () => {
-  console.log(`[MONGOOSE] Mongo bağlantısı kesildi!`);
+  console.log(`[MONGOOSE] Mongo is disconnected!`);
 });
 
 mongoose.connection.on("error", () => {
-  console.error(`[MONGOOSE] Mongo bağlantısı kurulurken bir hata oluştu!`);
+  console.error(`[MONGOOSE] An error occurred while connecting to Mongo!`);
 });
