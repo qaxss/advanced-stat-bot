@@ -18,16 +18,16 @@ module.exports = async (client) => {
 		const messageData = async (type) => {
 			let data = await messageUser.find({ guildID: Guild.id }).sort({ weeklyStat: -1 });
 			data = data.filter((e) => e[type] !== 0 && Guild.members.cache.has(e.userID));
-			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${Number(e[type]).toLocaleString()} mesaj\``).join("\n") : "`Veri bulunmuyor.`";
+			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${Number(e[type]).toLocaleString()} mesaj\``).join("\n") : "`No data available.`";
 		};
 		const voiceData = async (type) => {
 			let data = await voiceUser.find({ guildID: Guild.id }).sort({ weeklyStat: -1 });
 			data = data.filter((e) => e[type] !== 0 && Guild.members.cache.has(e.userID));
-			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${client.getTime(e[type])}\``).join("\n") : "`Veri bulunmuyor.`";
+			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${client.getTime(e[type])}\``).join("\n") : "`No data available.`";
 		};
 
-		const text = new EmbedBuilder().setDescription(`${await messageData("weeklyStat")}`).setAuthor({ name: `${sunucuAdi} Mesaj Sıralaması | 1 Hafta`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Son Güncelleme", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp();
-		const voice = new EmbedBuilder().setDescription(`${await voiceData("weeklyStat")}`).setAuthor({ name: `${sunucuAdi} Ses Sıralaması | 1 Hafta`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Son Güncelleme", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp();
+		const text = new EmbedBuilder().setDescription(`${await messageData("weeklyStat")}`).setAuthor({ name: `${sunucuAdi} Message Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp();
+		const voice = new EmbedBuilder().setDescription(`${await voiceData("weeklyStat")}`).setAuthor({ name: `${sunucuAdi} Audio Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp();
 
 		return [text, voice];
 	};
@@ -92,11 +92,11 @@ module.exports = async (client) => {
 		if (isNaN(time) || time.toLocaleString().includes('-')) throw new TypeError("Invalid Argument : Time");
 		let date = moment.duration(time)._data;
 
-		if (date.years) return `${date.years} yıl${date.months ? `, ${date.months} ay` : ``}${date.days ? `, ${date.days} gün` : ``}`
-		if (date.months) return `${date.months} ay${date.days ? `, ${date.days} gün` : ``}${date.hours ? `, ${date.hours} saat` : ``}`
-		if (date.days) return `${date.days} gün${date.hours ? `, ${date.hours} saat` : ``}${date.minutes ? `, ${date.minutes} dakika` : ``}`;
-		if (date.hours) return `${date.hours} saat${date.minutes ? `, ${date.minutes} dakika` : ``}${date.seconds ? `, ${date.seconds} sn.` : ``}`;
-		if (date.minutes) return `${date.minutes} dakika${date.seconds ? `, ${date.seconds} sn.` : ``}`;
+		if (date.years) return `${date.years} yıl${date.months ? `, ${date.months} months` : ``}${date.days ? `, ${date.days} day` : ``}`
+		if (date.months) return `${date.months} ay${date.days ? `, ${date.days} day` : ``}${date.hours ? `, ${date.hours} hour` : ``}`
+		if (date.days) return `${date.days} gün${date.hours ? `, ${date.hours} hour` : ``}${date.minutes ? `, ${date.minutes} minutes` : ``}`;
+		if (date.hours) return `${date.hours} saat${date.minutes ? `, ${date.minutes} minute` : ``}${date.seconds ? `, ${date.seconds} seconds.` : ``}`;
+		if (date.minutes) return `${date.minutes} dakika${date.seconds ? `, ${date.seconds} seconds.` : ``}`;
 		if (date.seconds) return `${date.seconds} sn.`;
 	};
 
