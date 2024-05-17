@@ -16,5 +16,5 @@ require("./src/handlers/functionHandler")(client);
 
 client
   .login(settings.token)
-  .then(() => console.log("[BOT] Bot bağlantısı başarıyla kuruldu!"))
-  .catch(() => console.error("[BOT] Bot bağlantısı kurulurken bir hata oluştu!"));
+  .then(() => console.log("[BOT] The bot connection has been successfully established!"))
+  .catch(() => console.error("[BOT] An error occurred while establishing the bot connection!"));
