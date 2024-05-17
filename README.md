@@ -1,12 +1,12 @@
 # Discord Advanced Stat Bot
 
 - [Advanced Stat bot](#discord-advanced-stat-bot)
-  - [Setup](#kurulum)
-  - [Özellikler](#özellikler)
-  - [Görseller](#görseller)
-  - [İletişim](#i̇letişim)
+  - [Setup](#Setup)
+  - [Properties](#özellikler)
+  - [Images](#görseller)
+  - [Communication](#i̇letişim)
 
-# Kurulum
+# Setup
 * İlk olarak bilgisayarına [Node JS](https://nodejs.org/tr/) indir.
 * Daha sonra bir [MongoDB](http://mongodb.com) hesabı oluştur ve connection linki al.
 * Bu projeyi zip halinde indir.
