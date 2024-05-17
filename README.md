@@ -1,7 +1,7 @@
 # Discord Advanced Stat Bot
 
 - [Advanced Stat bot](#discord-advanced-stat-bot)
-  - [Kurulum](#kurulum)
+  - [Setup](#kurulum)
   - [Özellikler](#özellikler)
   - [Görseller](#görseller)
   - [İletişim](#i̇letişim)
