@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 
-const şema = Schema({
+const schema = Schema({
   guildID: String,
   userID: String,
   date: Number,
 });
 
-module.exports = model("voiceJoinedAt", şema);
+module.exports = model("voiceJoinedAt", schema);
