@@ -18,7 +18,7 @@ module.exports = async (client) => {
 		const messageData = async (type) => {
 			let data = await messageUser.find({ guildID: Guild.id }).sort({ weeklyStat: -1 });
 			data = data.filter((e) => e[type] !== 0 && Guild.members.cache.has(e.userID));
-			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${Number(e[type]).toLocaleString()} mesaj\``).join("\n") : "`No data available.`";
+			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${Number(e[type]).toLocaleString()} message\``).join("\n") : "`No data available.`";
 		};
 		const voiceData = async (type) => {
 			let data = await voiceUser.find({ guildID: Guild.id }).sort({ weeklyStat: -1 });
@@ -26,8 +26,8 @@ module.exports = async (client) => {
 			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${client.getTime(e[type])}\``).join("\n") : "`No data available.`";
 		};
 
-		const text = new EmbedBuilder().setDescription(`${await messageData("weeklyStat")}`).setAuthor({ name: `${sunucuAdi} Message Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp();
-		const voice = new EmbedBuilder().setDescription(`${await voiceData("weeklyStat")}`).setAuthor({ name: `${sunucuAdi} Audio Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp();
+		const text = new EmbedBuilder().setDescription(`${await messageData("weeklyStats")}`).setAuthor({ name: `${sunucuAdi} Message Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp(); //sunucuAdi=serverName
+		const voice = new EmbedBuilder().setDescription(`${await voiceData("weeklyStats")}`).setAuthor({ name: `${sunucuAdi} Audio Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp(); //sunucuAdi=serverName
 
 		return [text, voice];
 	};
