@@ -1,5 +1,5 @@
 const { GuildMember, EmbedBuilder } = require("discord.js");
-const { emojis, sunucuAdi, badges } = require("../configs/config.json");
+const { emojis, serverName, badges } = require("../configs/config.json");
 const messageUser = require("../schemas/messageUser");
 const voiceUser = require("../schemas/voiceUser");
 const moment = require("moment");
@@ -26,8 +26,8 @@ module.exports = async (client) => {
 			return data.length > 0 ? data.splice(0, 20).map((e, i) => `\`${i + 1}.\` <@${e.userID}> : \`${client.getTime(e[type])}\``).join("\n") : "`No data available.`";
 		};
 
-		const text = new EmbedBuilder().setDescription(`${await messageData("weeklyStats")}`).setAuthor({ name: `${sunucuAdi} Message Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp(); //sunucuAdi=serverName
-		const voice = new EmbedBuilder().setDescription(`${await voiceData("weeklyStats")}`).setAuthor({ name: `${sunucuAdi} Audio Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp(); //sunucuAdi=serverName
+		const text = new EmbedBuilder().setDescription(`${await messageData("weeklyStats")}`).setAuthor({ name: `${serverName} Message Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp(); //sunucuAdi=serverName
+		const voice = new EmbedBuilder().setDescription(`${await voiceData("weeklyStats")}`).setAuthor({ name: `${serverName} Audio Ranking | 1 Week`, iconURL: Guild.iconURL({ forceStatic: true }) }).setFooter({ text: "Last Update", iconURL: Guild.iconURL({ forceStatic: true }) }).setColor("White").setTimestamp(); //sunucuAdi=serverName
 
 		return [text, voice];
 	};
